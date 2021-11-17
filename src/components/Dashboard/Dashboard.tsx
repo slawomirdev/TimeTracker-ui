@@ -1,5 +1,7 @@
-import React from "react";
+import React, { Profiler } from "react";
 import styled from "styled-components";
+import Image from "next/image";
+import ProfileImage from "../../../images/image-jeremy.png";
 import Dots from "../../../images/icon-ellipsis.svg";
 import IconWork from "../../../images/icon-work.svg";
 import data from "../../../data.json";
@@ -27,7 +29,7 @@ const MainBoard = styled.div`
   overflow: hidden;
   position: relative;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 800px) {
     grid-row: 1/1;
   }
 `;
@@ -97,6 +99,14 @@ const Profile = styled.div`
   left: 0;
   top: 0;
   padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (max-width: 800px) {
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+  }
 `;
 
 const Switch = styled.div`
@@ -106,6 +116,23 @@ const Switch = styled.div`
   border-radius: 15px;
   align-self: flex-end;
   padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @media screen and (max-width: 800px) {
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+  }
+`;
+
+const Name = styled(BigText)`
+  padding-top: 0;
+
+  @media screen and (max-width: 800px) {
+    font-size: 1rem;
+  }
 `;
 
 const Dashboard = () => {
@@ -113,8 +140,17 @@ const Dashboard = () => {
     <Wrapper>
       <MainBoard>
         <Profile>
-          <TextInfo>Report for</TextInfo>
-          <BigText>Jeremy Robson</BigText>
+          <Image
+            src={ProfileImage}
+            width={60}
+            height={60}
+            alt="Profile Picture"
+            layout="fixed"
+          />
+          <div>
+            <TextInfo>Report for</TextInfo>
+            <Name>Jeremy Robson</Name>
+          </div>
         </Profile>
         <Switch>
           <TextInfo>Daily</TextInfo>
