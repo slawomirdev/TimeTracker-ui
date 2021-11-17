@@ -80,6 +80,7 @@ const BigText = styled.p`
   font-size: 3.4rem;
   font-weight: 300;
   color: ${(props) => props.theme.colors.White};
+  transition: all 0.5s ease;
 `;
 
 const TextInfo = styled.p`
@@ -101,6 +102,10 @@ const Profile = styled.div`
   padding: 1.2rem;
   display: flex;
   flex-direction: column;
+
+  div {
+    padding-top: 0.8rem;
+  }
 
   @media screen and (max-width: 800px) {
     flex-direction: row;
@@ -135,7 +140,36 @@ const Name = styled(BigText)`
   }
 `;
 
+const TimeButton = styled(TextInfo)`
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: #fff;
+  }
+`;
+
 const Dashboard = () => {
+  type Time = "weekly" | "daily" | "monthly";
+  type MyType = {
+    title: string;
+    timeFrames: {
+      current: string;
+      previous: string;
+    };
+  };
+
+  const [match, setMatch] = React.useState<Time>("daily");
+  const [current, setCurrent] = React.useState<MyType[] | null>(null);
+
+  React.useEffect(() => {
+    const newArray: any = data.map((item) => {
+      return { title: item.title, timeFrames: item.timeframes[match] };
+    });
+
+    setCurrent(newArray);
+  }, [match]);
+
   return (
     <Wrapper>
       <MainBoard>
@@ -153,12 +187,12 @@ const Dashboard = () => {
           </div>
         </Profile>
         <Switch>
-          <TextInfo>Daily</TextInfo>
-          <TextInfo>Weekly</TextInfo>
-          <TextInfo>Monthly</TextInfo>
+          <TimeButton onClick={() => setMatch("daily")}>Daily</TimeButton>
+          <TimeButton onClick={() => setMatch("weekly")}>Weekly</TimeButton>
+          <TimeButton onClick={() => setMatch("monthly")}>Monthly</TimeButton>
         </Switch>
       </MainBoard>
-      {data.map((item) => {
+      {current?.map((item) => {
         return (
           <Container key={item.title}>
             <Banner>
@@ -166,21 +200,13 @@ const Dashboard = () => {
             </Banner>
             <StatsBox>
               <Title>{item.title}</Title>
-              <BigText>{item.timeframes.daily.current}hrs</BigText>
-              <TextInfo>
-                Last Week - {item.timeframes.daily.previous}hrs
-              </TextInfo>
+              <BigText>{item.timeFrames.current}hrs</BigText>
+              <TextInfo>Last Week - {item.timeFrames.previous}hrs</TextInfo>
               <Dots />
             </StatsBox>
           </Container>
         );
       })}
-
-      {/* <Container>xd</Container>
-      <Container>xd</Container>
-      <Container>xd</Container>
-      <Container>xd</Container>
-      <Container>xd</Container> */}
     </Wrapper>
   );
 };
