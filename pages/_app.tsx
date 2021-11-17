@@ -16,7 +16,7 @@ html{
 const theme = {
   colors: {
     BlueColor: "hsl(246, 80%, 60%)",
-    LightRedColor: "hsl(15, 100%, 70%)",
+    LightOrange: "hsl(15, 100%, 70%)",
     Softblue: "hsl(195, 74%, 62%)",
     Lightred: "hsl(348, 100%, 68%)",
     Limegreen: "hsl(145, 58%, 55%)",
@@ -26,6 +26,7 @@ const theme = {
     DarkBlue: "hsl(235, 46%, 20%)",
     Desaturatedblue: "hsl(235, 45%, 61%)",
     PaleBlue: "hsl(236, 100%, 87%)",
+    White: "#fff",
   },
 };
 

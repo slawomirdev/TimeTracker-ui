@@ -2,11 +2,16 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import styled from "styled-components";
+import Dashboard from "../src/components/Dashboard/Dashboard";
 
 const Wrapper = styled.div`
   background-color: ${(props) => props.theme.colors.VeryDarkBlue};
   width: 100%;
-  height: 100vh;
+  /* height: 100vh; */
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Home: NextPage = () => {
@@ -18,7 +23,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Wrapper>
-        <h1>Hello world</h1>
+        <Dashboard />
       </Wrapper>
     </div>
   );
