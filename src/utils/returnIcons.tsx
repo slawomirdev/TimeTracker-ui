@@ -19,7 +19,6 @@ export const returnIcon = (iconName: string) => {
     item.type.name.includes(iconName.split(" ").join(""))
   );
 
-  console.log(icon);
 
   if (icon) {
     return icon;
