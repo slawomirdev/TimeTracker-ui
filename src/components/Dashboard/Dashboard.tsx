@@ -4,7 +4,11 @@ import Image from "next/image";
 import ProfileImage from "../../../images/image-jeremy.png";
 import Dots from "../../../images/icon-ellipsis.svg";
 import IconWork from "../../../images/icon-work.svg";
+import IconExercise from "../../../images/icon-exercise.svg";
+import IconPlay from "../../../images/icon-play.svg";
 import data from "../../../data.json";
+
+const icons = [<IconWork />, <IconExercise />, <IconPlay />];
 
 const Wrapper = styled.div`
   width: 70%;
@@ -149,6 +153,16 @@ const TimeButton = styled(TextInfo)`
   }
 `;
 
+const returnIcon = (iconName) => {
+  const icon = icons.find((item) => item.type.name.includes(iconName));
+
+  if (icon) {
+    return icon;
+  } else {
+    return <IconWork />;
+  }
+};
+
 const Dashboard = () => {
   type Time = "weekly" | "daily" | "monthly";
   type MyType = {
@@ -168,6 +182,7 @@ const Dashboard = () => {
     });
 
     setCurrent(newArray);
+    console.log(icons);
   }, [match]);
 
   return (
@@ -195,9 +210,7 @@ const Dashboard = () => {
       {current?.map((item) => {
         return (
           <Container key={item.title}>
-            <Banner>
-              <IconWork />
-            </Banner>
+            <Banner>{returnIcon(item.title)}</Banner>
             <StatsBox>
               <Title>{item.title}</Title>
               <BigText>{item.timeFrames.current}hrs</BigText>
