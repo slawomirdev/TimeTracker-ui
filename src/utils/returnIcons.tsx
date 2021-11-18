@@ -15,10 +15,11 @@ const icons = [
 ];
 
 export const returnIcon = (iconName: string) => {
+  console.log(iconName);
+
   const icon = icons.find((item) =>
     item.type.name.includes(iconName.split(" ").join(""))
   );
-
 
   if (icon) {
     return icon;
