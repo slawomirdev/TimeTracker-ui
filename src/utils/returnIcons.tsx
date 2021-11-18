@@ -16,6 +16,7 @@ const icons = [
 
 export const returnIcon = (iconName: string) => {
   console.log(iconName);
+  console.log(icons);
 
   const icon = icons.find((item) =>
     item.type.name.includes(iconName.split(" ").join(""))
