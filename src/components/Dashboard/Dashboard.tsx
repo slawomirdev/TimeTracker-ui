@@ -207,19 +207,24 @@ const Dashboard = () => {
           </TimeButton>
         </Switch>
       </MainBoard>
-      {current?.map((item) => {
-        return (
-          <Container key={item.title}>
-            <Banner color={item.color}>{returnIcon(item.title)}</Banner>
-            <StatsBox>
-              <Title>{item.title}</Title>
-              <BigText>{item.timeFrames.current}hrs</BigText>
-              <TextInfo>Last Week - {item.timeFrames.previous}hrs</TextInfo>
-              <Dots />
-            </StatsBox>
-          </Container>
-        );
-      })}
+      {current === null ? (
+        <h1>Loading...</h1>
+      ) : (
+        current.map((item) => {
+          return (
+            <Container key={item.title}>
+              <Banner color={item.color}>{returnIcon(item.title)}</Banner>
+              <StatsBox>
+                <Title>{item.title}</Title>
+                <BigText>{item.timeFrames.current}hrs</BigText>
+                <TextInfo>Last Week - {item.timeFrames.previous}hrs</TextInfo>
+                <Dots />
+              </StatsBox>
+            </Container>
+          );
+        })
+      )}
+      {}
     </Wrapper>
   );
 };
