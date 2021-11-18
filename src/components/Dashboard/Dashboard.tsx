@@ -66,7 +66,7 @@ const StatsBox = styled.div`
 `;
 
 const Banner = styled.div`
-  background-color: ${(props) => props.theme.colors.LightOrange};
+  background-color: ${(props) => props.color};
   width: 100%;
   height: 25%;
   border-radius: 15px;
@@ -179,6 +179,7 @@ const Dashboard = () => {
   type Time = "weekly" | "daily" | "monthly";
   type MyType = {
     title: string;
+    color: string;
     timeFrames: {
       current: string;
       previous: string;
@@ -190,7 +191,11 @@ const Dashboard = () => {
 
   React.useEffect(() => {
     const newArray: any = data.map((item) => {
-      return { title: item.title, timeFrames: item.timeframes[match] };
+      return {
+        title: item.title,
+        color: item.color,
+        timeFrames: item.timeframes[match],
+      };
     });
 
     setCurrent(newArray);
@@ -222,7 +227,7 @@ const Dashboard = () => {
       {current?.map((item) => {
         return (
           <Container key={item.title}>
-            <Banner>{returnIcon(item.title)}</Banner>
+            <Banner color={item.color}>{returnIcon(item.title)}</Banner>
             <StatsBox>
               <Title>{item.title}</Title>
               <BigText>{item.timeFrames.current}hrs</BigText>
