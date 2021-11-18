@@ -22,12 +22,11 @@ const icons = [
 
 const Wrapper = styled.div`
   width: 70%;
-  /* background-color: pink; */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  /* grid-template-rows: 1fr 1fr; */
   gap: 1.5rem;
   grid-auto-rows: minmax(15rem, auto);
+  margin: 5rem 0rem;
 `;
 
 const Container = styled.div`
