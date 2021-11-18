@@ -30,13 +30,11 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-  /* background-color: red; */
   display: flex;
   position: relative;
 `;
 
 const MainBoard = styled.div`
-  /* background-color: white; */
   grid-row: 1/3;
   display: flex;
   overflow: hidden;
@@ -56,6 +54,12 @@ const StatsBox = styled.div`
   z-index: 3;
   position: relative;
   padding: 1.2rem;
+  transition: all 0.3s ease-ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${(props) => props.theme.colors.BlueColor};
+  }
 
   svg {
     position: absolute;
@@ -156,6 +160,7 @@ const Name = styled(BigText)`
 const TimeButton = styled(TextInfo)`
   cursor: pointer;
   transition: all 0.3s ease;
+  width: fit-content;
 
   &:hover {
     color: #fff;
@@ -198,7 +203,6 @@ const Dashboard = () => {
     });
 
     setCurrent(newArray);
-    console.log(icons);
   }, [match]);
 
   return (
@@ -218,9 +222,15 @@ const Dashboard = () => {
           </div>
         </Profile>
         <Switch>
-          <TimeButton onClick={() => setMatch("daily")}>Daily</TimeButton>
-          <TimeButton onClick={() => setMatch("weekly")}>Weekly</TimeButton>
-          <TimeButton onClick={() => setMatch("monthly")}>Monthly</TimeButton>
+          <TimeButton as="a" onClick={() => setMatch("daily")}>
+            Daily
+          </TimeButton>
+          <TimeButton as="a" onClick={() => setMatch("weekly")}>
+            Weekly
+          </TimeButton>
+          <TimeButton as="a" onClick={() => setMatch("monthly")}>
+            Monthly
+          </TimeButton>
         </Switch>
       </MainBoard>
       {current?.map((item) => {
