@@ -31,8 +31,8 @@ Users should be able to:
 
 ### Links
 
-- Challenge URL: [Add solution URL here](https://www.frontendmentor.io/challenges/time-tracking-dashboard-UIQ7167Jw/)
-- Live Site URL: [Add live site URL here](https://timetracker-nextjs.netlify.app)
+- Challenge URL: [Click](https://www.frontendmentor.io/challenges/time-tracking-dashboard-UIQ7167Jw/)
+- Live Site URL: [Click](https://timetracker-nextjs.netlify.app)
 
 ## My process
 
